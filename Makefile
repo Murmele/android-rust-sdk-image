@@ -15,4 +15,7 @@ dockerhub_push:
 	docker push $(IMAGE):latest \
 	&& docker push "$(IMAGE):$(IMAGE_TAG)"
 
+run:
+	docker run -it $(IMAGE) /bin/bash
+
 .PHONY: release tag_image build dockerhub_push
