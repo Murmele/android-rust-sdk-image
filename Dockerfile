@@ -1,7 +1,8 @@
 FROM mobiledevops/flutter-sdk-image:3.16.4
 
 USER root
-apt install cmake
+RUN apt -qq update
+RUN apt -qqy --no-install-recommends install cmake
 
 USER mobiledevops
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
