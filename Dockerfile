@@ -8,5 +8,6 @@ RUN rustup target add aarch64-linux-android
 RUN rustup target add x86_64-unknown-linux-gnu
 RUN rustup target add i686-linux-android
 RUN rustup target add armv7-linux-androideabi
+RUN rustup component add rustfmt
 
 
