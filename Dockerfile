@@ -10,7 +10,7 @@ USER mobiledevops
 # ANDROID NKD
 #RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;26.1.10909125"
 # https://github.com/bbqsrc/cargo-ndk/issues/77
-RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;22.1.7171670"
+RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;23.2.8568313"
 ENV ANDROID_NDK $ANDROID_HOME/ndk
 
 # Required for Flutter Rust Bridge
