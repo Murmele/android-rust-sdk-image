@@ -12,6 +12,7 @@ RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;26.1.10909125"
 ENV ANDROID_NDK $ANDROID_HOME/ndk
 
 # Required for Flutter Rust Bridge
+RUN mkdir -p ~/.gradle
 RUN echo "ANDROID_NDK=$ANDROID_NDK" > ~/.gradle/gradle.properties
 RUN cat ~/.gradle/gradle.properties
 
