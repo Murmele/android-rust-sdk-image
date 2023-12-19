@@ -9,7 +9,7 @@ tag_image: build
 	docker tag $(IMAGE):latest $(IMAGE):$(IMAGE_TAG)
 
 build:
-	docker build -t $(IMAGE) .
+	docker build --progress=plain -t $(IMAGE) .
 
 dockerhub_push:	
 	docker push $(IMAGE):latest \
