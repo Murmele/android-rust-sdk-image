@@ -3,7 +3,7 @@ FROM mobiledevops/flutter-sdk-image:3.16.4
 USER root
 RUN apt -qq update
 RUN apt -qqy --no-install-recommends install cmake
-RUN apt -y install ninja-build clang
+RUN apt -y install ninja-build clang libgtk-3-dev
 
 USER mobiledevops
 
