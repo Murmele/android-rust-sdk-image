@@ -31,6 +31,8 @@ RUN rustup target add x86_64-unknown-linux-gnu
 RUN rustup target add i686-linux-android
 RUN rustup target add armv7-linux-androideabi
 RUN rustup component add rustfmt
+RUN rustup component add llvm-tools-preview
 RUN cargo install cargo-ndk # needed for the android build
+RUN cargo install cargo-binutils # to check binary output size (used for small microcontrollers)
 
 
