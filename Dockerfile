@@ -3,7 +3,9 @@ FROM mobiledevops/flutter-sdk-image:3.16.4
 USER root
 RUN apt -qq update
 RUN apt -qqy --no-install-recommends install cmake
-RUN apt -y install ninja-build clang libgtk-3-dev libudev-dev
+RUN apt -y install ninja-build clang libgtk-3-dev
+RUN apt -y install libudev-dev # serial usb
+RUN apt -y install alsa-base alsa-utils # sound
 
 # use newer rust version
 RUN apt -y remove cargo
