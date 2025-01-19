@@ -1,4 +1,4 @@
-FROM mobiledevops/flutter-sdk-image:3.16.4
+FROM mobiledevops/flutter-sdk-image:3.19.4
 
 USER root
 RUN apt -qq update
