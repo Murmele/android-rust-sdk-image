@@ -6,6 +6,7 @@ RUN apt -qqy --no-install-recommends install cmake
 RUN apt -y install ninja-build clang libgtk-3-dev
 RUN apt -y install libudev-dev # serial usb
 RUN apt -y install alsa-base alsa-utils libasound2-dev # sound
+RUN apt -y install libsdl2-dev # display simulator
 
 # use newer rust version
 RUN apt -y remove cargo
