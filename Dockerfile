@@ -1,4 +1,4 @@
-FROM mobiledevops/flutter-sdk-image:3.19.4
+FROM mobiledevops/android-sdk-image:34.0.1
 
 USER root
 RUN apt -qq update
@@ -16,8 +16,6 @@ USER mobiledevops
 
 # ANDROID NKD
 #RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;26.1.10909125"
-# https://github.com/bbqsrc/cargo-ndk/issues/77
-RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;23.2.8568313"
 ENV ANDROID_NDK $ANDROID_HOME/ndk
 
 # Required for Flutter Rust Bridge
