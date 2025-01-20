@@ -17,8 +17,12 @@ RUN apt -y install libsdl2-dev # display simulator
 RUN apt -y remove cargo
 RUN apt -y autoremove
 
+# $HOME ddefined in mobiledevops/android-sdk-image
+
 # ANDROID NDK
-#RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;26.1.10909125"
+# RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;26.1.10909125"
+# https://github.com/bbqsrc/cargo-ndk/issues/77
+RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;23.2.8568313"
 ENV ANDROID_NDK $ANDROID_HOME/ndk
 
 # Required for Flutter Rust Bridge
