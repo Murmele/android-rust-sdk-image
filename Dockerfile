@@ -1,6 +1,11 @@
 FROM mobiledevops/android-sdk-image:34.0.1
 
 USER root
+
+# workaround for https://github.com/microsoft/WSL/discussions/11097
+RUN mv /usr/sbin/telinit /usr/sbin/telinit.bak2
+RUN ln -s /usr/bin/true /usr/sbin/telinit
+
 RUN apt -qq update
 RUN apt -qqy --no-install-recommends install cmake
 RUN apt -y install ninja-build clang libgtk-3-dev
