@@ -17,15 +17,13 @@ RUN apt -y install libsdl2-dev # display simulator
 RUN apt -y remove cargo
 RUN apt -y autoremove
 
-USER mobiledevops
-
 # ANDROID NDK
 #RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;26.1.10909125"
 ENV ANDROID_NDK $ANDROID_HOME/ndk
 
 # Required for Flutter Rust Bridge
-RUN mkdir -p $HOME/.gradle
-RUN echo "ANDROID_NDK=$ANDROID_NDK" > $HOME/.gradle/gradle.properties
+#RUN mkdir -p $HOME/.gradle
+#RUN echo "ANDROID_NDK=$ANDROID_NDK" > $HOME/.gradle/gradle.properties
 
 # Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
