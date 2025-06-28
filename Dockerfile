@@ -33,8 +33,8 @@ RUN echo "ANDROID_NDK=$ANDROID_NDK" > $HOME/.gradle/gradle.properties
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH $HOME/.cargo/bin:$PATH
 # nightly is required to use const generic expressions
-RUN rustup default nightly-2024-10-01
-RUN rustup override set nightly-2024-10-01
+RUN rustup default nightly-2025-06-28
+RUN rustup override set nightly-2025-06-28
 RUN rustup target install x86_64-linux-android
 RUN rustup target add thumbv7em-none-eabihf # Embedded
 RUN rustup target add aarch64-linux-android
