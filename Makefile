@@ -1,5 +1,5 @@
 IMAGE_TAG := $(IMAGE_TAG)
-IMAGE := murmele/flutter-rust-sdk-image
+IMAGE := murmele/android-rust-sdk-image
 
 release: \
 	tag_image \

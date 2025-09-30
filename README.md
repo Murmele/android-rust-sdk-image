@@ -1,19 +1,13 @@
-# Docker image for Flutter SDK with Rust packages
+# Docker image for Rust with Android SDK
 
-Docker image to build a Flutter app `*.apk` for Android and Linux with Rust support. The latest image contains always the latest stable version of the Flutter SDK: https://flutter.dev/docs/development/tools/sdk/releases?tab=linux
+Docker image to build a native Rust apps for Android and Linux.
 
-This is a fork of MobileDevOps/flutter-sdk-image with extended rust support.
+This is a fork of mobiledevops/android-sdk-image with extended rust support.
 
-Currently:
+## Changes
 
-| Version  | Ref | Release Date |
-|---|---|---|
-
-
-## Releases
-
-| Tag | Flutter Version | Flutter Channel |
-|---|---|---|
+- Rust support
+- xbuild support to easily create android apk's
 
 
 ## Usage
@@ -34,13 +28,15 @@ version: 2.1
 jobs:
   build:
     docker: 
-      - image: murmele/flutter-rust-sdk-image:1.0.0
+      - image: murmele/android-sdk-image:1.6.0
     steps:
       - checkout
       - run:
-          name: Flutter Build
-          command: flutter build apk
+          name: Android Build
+          command: ./gradlew clean assembleRelease
 ```
+
+Example Project: https://github.com/mobiledevops/android-ci-demo
 
 ### Travis CI 
 
@@ -59,17 +55,17 @@ services:
   - docker
 
 env:
-  - DOCKER_IMAGE=murmele/flutter-rust-sdk-image:1.0.0
+  - DOCKER_IMAGE=murmele/android-sdk-image:1.6.0
 
 before_install:
   - docker pull $DOCKER_IMAGE
   - docker run --name android_ci -t -d $DOCKER_IMAGE /bin/sh
-  - tar Ccf . - . | docker exec -i android_ci tar Cxf /app -
+  - tar Ccf . - . | docker exec -i android_ci tar Cxf /home/mobiledevops/app -
 
 script:
-  - docker exec android_ci flutter build apk
+  - docker exec android_ci ./gradlew clean assembleRelease
 ```
-Example Project: https://github.com/mobiledevops/flutter-ci-demo
+Example Project: https://github.com/mobiledevops/android-ci-demo
 
 ### GitLab CI
 
@@ -81,7 +77,7 @@ Example:
 
 ```
 # .gitlab-ci.yml
-image: murmele/flutter-rust-sdk-image:1.0.0
+image: murmele/android-sdk-image:1.6.0
 
 stages:
     - build
@@ -91,8 +87,10 @@ release_build:
     tags:
       - shared
     script:
-        - flutter build apk
+        - ./gradlew clean assembleRelease
 ```
+
+Example Project: https://gitlab.com/mobiledevops/android-ci-demo
 
 ---
 

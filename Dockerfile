@@ -25,7 +25,7 @@ RUN apt -y autoremove
 RUN sdkmanager --sdk_root=$ANDROID_HOME "ndk;23.2.8568313"
 ENV ANDROID_NDK $ANDROID_HOME/ndk
 
-# Required for Flutter Rust Bridge
+
 RUN mkdir -p $HOME/.gradle
 RUN echo "ANDROID_NDK=$ANDROID_NDK" > $HOME/.gradle/gradle.properties
 
@@ -39,11 +39,10 @@ RUN rustup target install x86_64-linux-android
 RUN rustup target add thumbv7em-none-eabihf # Embedded
 RUN rustup target add aarch64-linux-android
 RUN rustup target add x86_64-unknown-linux-gnu
-RUN rustup target add i686-linux-android
-RUN rustup target add armv7-linux-androideabi
 RUN rustup component add llvm-tools
 RUN rustup component add rustfmt
 RUN cargo install cargo-ndk # needed for the android build
 RUN cargo install cargo-binutils # to check binary output size (used for small microcontrollers)
+RUN cargo install xbuild # needed to create apk's
 
 
